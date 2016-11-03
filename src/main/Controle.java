@@ -2,8 +2,8 @@ package main;
 
 import java.util.Random;
 
-public class Controle{
-	//==========SENSORES==========
+public class Controle {
+	// ==========SENSORES==========
 	public class Sensor {
 		private int valor;
 		private int id;
@@ -20,7 +20,7 @@ public class Controle{
 			alerta = false;
 			valvula = false;
 		}
-		
+
 		public int getValor() {
 			return valor;
 		}
@@ -28,9 +28,15 @@ public class Controle{
 		public void setValor(int valor) {
 			this.valor = valor;
 		}
-		public boolean getValvula() {return valvula;}
-		public void setValvula(boolean b) {valvula = b;}
-		
+
+		public boolean getValvula() {
+			return valvula;
+		}
+
+		public void setValvula(boolean b) {
+			valvula = b;
+		}
+
 		public boolean setH() {
 			if (habilitado)
 				return false;
@@ -44,9 +50,14 @@ public class Controle{
 			habilitado = false;
 			return true;
 		}
-		
-		public void setR(float r) {confiabilidade = r;}
-		public boolean getH() {return habilitado;}
+
+		public void setR(float r) {
+			confiabilidade = r;
+		}
+
+		public boolean getH() {
+			return habilitado;
+		}
 
 		public boolean setAlerta() {
 			if (alerta || !habilitado)
@@ -54,7 +65,6 @@ public class Controle{
 			Random r = new Random();
 			float chance = r.nextFloat();
 			if (chance < confiabilidade) {
-				setH();// parece descenessario
 				alerta(id);
 				return true;
 			}
@@ -64,17 +74,18 @@ public class Controle{
 		public boolean resetAlerta() {
 			if (!alerta)
 				return false;
-			setH();// parece desnecessario
 			Controle.this.resetAlerta(id);
 			return true;
 		}
 
-		public boolean getAlerta() {return alerta;}
+		public boolean getAlerta() {
+			return alerta;
+		}
 	}
-	
-	//==========CONTROLE==========
-	public Sensor pressao;
+
+	// ==========CONTROLE==========
 	public Sensor temperatura;
+	public Sensor pressao;
 
 	public Controle() {
 		Random r = new Random();
@@ -102,9 +113,14 @@ public class Controle{
 			return res = pressao.resetH();
 		return res;
 	}
-	
-	public void alerta(int s) {open(s);}
-	public void resetAlerta(int s) {fecha(s);}
+
+	public void alerta(int s) {
+		open(s);
+	}
+
+	public void resetAlerta(int s) {
+		fecha(s);
+	}
 
 	public void open(int s) {
 		if (s == 1) {
