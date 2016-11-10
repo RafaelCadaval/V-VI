@@ -55,6 +55,11 @@ public class Controle {
 			confiabilidade = r;
 		}
 
+		// Nao se encontra nos requisitos, mas facilita os testes
+		public float getR() {
+			return confiabilidade;
+		}
+
 		public boolean getH() {
 			return habilitado;
 		}
@@ -144,13 +149,13 @@ public class Controle {
 		}
 	}
 
-	public boolean getV(int s) {
+	public boolean getV(int s) throws Exception {
 		if (s == 1) {
 			return temperatura.getValvula();
 		}
 		if (s == 2) {
 			return pressao.getValvula();
 		}
-		return false;// pode dar ruim
+		throw new Exception();
 	}
 }
